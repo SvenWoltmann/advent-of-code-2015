@@ -7,4 +7,7 @@
 <suppressions>
   <!-- The Main classes contain the puzzle input which is sometimes wider than 100 characters. -->
   <suppress files=".*Main\.java" checks="LineLengthCheck"/>
+
+  <!-- To allow members 'x' and 'y' -->
+  <suppress files="Location\.java|Position\.java" checks="MemberNameCheck|MethodNameCheck"/>
 </suppressions>
