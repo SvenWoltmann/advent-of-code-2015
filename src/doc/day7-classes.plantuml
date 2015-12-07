@@ -1,0 +1,77 @@
+@startuml
+
+class Instruction{
+  {field} wireSource : WireSource
+  {field} destinationWireId: String
+}
+
+Instruction --> WireSource
+
+interface WireSource {
+  {method} getSignal() : int
+  {method} reset()
+}
+
+interface GateInput extends WireSource { }
+
+class Wire implements WireSource, GateInput {
+  {field} id : String
+  {field} wireSource : WireSource
+  {field} signal : int
+  {method} setWireSource(wireSource : WireSource)
+  {method} getSignal() : int
+  {method} reset()
+}
+
+Wire --> WireSource
+
+class SpecificValue implements WireSource, GateInput {
+  {field} signal : int
+  {method} getSignal() : int
+  {method} reset()
+}
+
+abstract class Gate extends WireSource {
+  {field} signal : int
+  {method} getSignal() : int
+  {abstract} applyOperation() : int
+}
+
+abstract class UnaryGate extends Gate {
+  {field} gateInput : GateInput
+  {method} applyOperation() : int
+  {abstract} applyOperation(signal : int) : int
+}
+
+GateInput <-- UnaryGate
+
+class NotGate extends UnaryGate {
+  {method} applyOperation(signal : int) : int
+}
+
+abstract class BinaryGate extends Gate {
+  {field} gateInput1 : GateInput
+  {field} gateInput2 : GateInput
+  {method} applyOperation() : int
+  {abstract} applyOperation(signal1 : int, signal2 : int) : int
+}
+
+GateInput <-- BinaryGate
+
+class AndGate extends BinaryGate {
+  {method} applyOperation(signal : int, signal : int) : int
+}
+
+class OrGate extends BinaryGate {
+  {method} applyOperation(signal : int, signal : int) : int
+}
+
+class LeftShiftGate extends BinaryGate {
+  {method} applyOperation(signal : int, signal : int) : int
+}
+
+class RightShiftGate extends BinaryGate {
+  {method} applyOperation(signal : int, signal : int) : int
+}
+
+@enduml
