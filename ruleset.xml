@@ -18,6 +18,7 @@
 
   <rule ref="category/java/codestyle.xml">
     <exclude name="AtLeastOneConstructor"/>             <!-- We don't need artificial default constructors. -->
+    <exclude name="CallSuperInConstructor"/>            <!-- We don't need to call the super constructor explicitly if it's done implicitly. -->
     <exclude name="CommentDefaultAccessModifier"/>      <!-- We don't comment why we make fields private, protected or public. So why should we comment on default access? -->
     <exclude name="LocalVariableCouldBeFinal"/>         <!-- Using 'final' on local variables (in contrast to fields) has no effect on the compiler; IMO it's noise. -->
     <exclude name="MethodArgumentCouldBeFinal"/>        <!-- Using 'final' on method arguments (in contrast to fields) has no effect on the compiler; IMO it's noise. -->
