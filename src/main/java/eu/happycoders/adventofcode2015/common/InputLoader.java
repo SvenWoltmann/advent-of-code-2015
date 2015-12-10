@@ -23,8 +23,18 @@ public class InputLoader {
    * @return the file contents
    */
   public static String loadInput(String fileName) {
+    Path path = Paths.get("src/main/java/eu/happycoders/adventofcode2015", fileName);
+    return loadFile(path);
+  }
+
+  /**
+   * Loads a file from the specified path.
+   *
+   * @param path the path relative to the root of this project.
+   * @return the file contents
+   */
+  public static String loadFile(Path path) {
     try {
-      Path path = Paths.get("src/main/java/eu/happycoders/adventofcode2015", fileName);
       byte[] bytes = Files.readAllBytes(path);
       return new String(bytes, StandardCharsets.UTF_8);
     } catch (IOException e) {
