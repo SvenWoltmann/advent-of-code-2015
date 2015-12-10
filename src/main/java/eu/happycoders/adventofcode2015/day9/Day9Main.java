@@ -14,7 +14,7 @@ class Day9Main {
   public static void main(String[] args) {
     String input = InputLoader.loadInput("day9/day9input.txt");
 
-    System.out.println(Day9Solver.solvePart1(input)); // 117
+    System.out.println(Day9Solver.solvePart1(input));
     System.out.println(Day9Solver.solvePart2(input));
   }
 }
