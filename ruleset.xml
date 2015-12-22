@@ -65,6 +65,7 @@
   <rule ref="category/java/errorprone.xml">
     <exclude name="AvoidFieldNameMatchingMethodName"/>  <!-- I personally like using the field name also as an accessor name for final fields (like in Java records). -->
     <exclude name="NullAssignment"/>                    <!-- Sometimes, we want to reset a value, e.g. in an array backing a collection, so it can be garbage-collected. -->
+    <exclude name="NonSerializableClass"/>              <!-- We don't use serialization. -->
   </rule>
 
   <!-- Allow a few other literals than the default (-1, 0). -->
