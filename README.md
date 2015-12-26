@@ -10,4 +10,6 @@ Most solutions to [Advent of Code](https://adventofcode.com/2015/) found on the 
 
 I therefore took the trouble to implement each task in a truly object-oriented and test-driven way, resulting in a solution made of small, comprehensible objects interacting with each other.
 
+For explanations of my solutions, see my [Advent of Code 2015 Solutions](https://www.happycoders.eu/algorithms/advent-of-code-2015/) article.
+
 This project uses Java 8, the latest Java version that was available in December 2015.
