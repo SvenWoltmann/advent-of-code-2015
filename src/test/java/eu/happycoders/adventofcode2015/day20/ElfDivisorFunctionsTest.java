@@ -3,67 +3,30 @@ package eu.happycoders.adventofcode2015.day20;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 class ElfDivisorFunctionsTest {
 
-  @Test
-  void givenMinimumPresents100_findLowestHouseNoForSumOfPresents_returns6() {
-    int minPresents = 100;
-
+  @ParameterizedTest(
+      name = "with unlimited houses per elf, house {1} is the first to get {0} presents")
+  @CsvSource({"100, 6", "1000, 48", "10000, 360"})
+  void
+      findLowestHouseNoForSumOfPresents_unlimitedHousesPerElfAndElfMultiple10_returnsTheLowestHouse(
+          int minPresents, int expectedHouseNo) {
     int lowestN =
         ElfDivisorFunctions.findLowestHouseNoForSumOfPresents(minPresents, Integer.MAX_VALUE, 10);
 
-    assertThat(lowestN).isEqualTo(6);
+    assertThat(lowestN).isEqualTo(expectedHouseNo);
   }
 
-  @Test
-  void givenMinimumPresents1000_findLowestHouseNoForSumOfPresents_returns48() {
-    int minPresents = 1_000;
-
-    int lowestN =
-        ElfDivisorFunctions.findLowestHouseNoForSumOfPresents(minPresents, Integer.MAX_VALUE, 10);
-
-    assertThat(lowestN).isEqualTo(48);
-  }
-
-  @Test
-  void givenMinimumPresents10000_findLowestHouseNoForSumOfPresents_returns360() {
-    int minPresents = 10_000;
-
-    int lowestN =
-        ElfDivisorFunctions.findLowestHouseNoForSumOfPresents(minPresents, Integer.MAX_VALUE, 10);
-
-    assertThat(lowestN).isEqualTo(360);
-  }
-
-  @Test
-  void
-      givenMinimumPresents100AndMaxHousesPerElf5AndElfMultiple20_findLowestHouseNoForSumOfPresents_returns4() {
-    int minPresents = 100;
-
+  @ParameterizedTest(name = "with 5 houses per elf, house {1} is the first to get {0} presents")
+  @CsvSource({"100, 4", "1000, 24", "10000, 240"})
+  void findLowestHouseNoForSumOfPresents_maxHousesPerElf5AndElfMultiple20_returnsTheLowestHouse(
+      int minPresents, int expectedHouseNo) {
     int lowestN = ElfDivisorFunctions.findLowestHouseNoForSumOfPresents(minPresents, 5, 20);
 
-    assertThat(lowestN).isEqualTo(4);
-  }
-
-  @Test
-  void
-      givenMinimumPresents1000AndMaxHousesPerElf5AndElfMultiple20_findLowestHouseNoForSumOfPresents_returns48() {
-    int minPresents = 1_000;
-
-    int lowestN = ElfDivisorFunctions.findLowestHouseNoForSumOfPresents(minPresents, 5, 20);
-
-    assertThat(lowestN).isEqualTo(24);
-  }
-
-  @Test
-  void
-      givenMinimumPresents10000AndMaxHousesPerElf5AndElfMultiple20_findLowestHouseNoForSumOfPresents_returns360() {
-    int minPresents = 10_000;
-
-    int lowestN = ElfDivisorFunctions.findLowestHouseNoForSumOfPresents(minPresents, 5, 20);
-
-    assertThat(lowestN).isEqualTo(240);
+    assertThat(lowestN).isEqualTo(expectedHouseNo);
   }
 
   @Test

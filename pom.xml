@@ -27,6 +27,12 @@
     <sonar.projectKey>SvenWoltmann_advent-of-code-2015</sonar.projectKey>
     <sonar.organization>svenwoltmann</sonar.organization>
     <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+    <!-- The two tests replay the puzzle's example fights turn by turn; the assertions are the story, splitting them would tear it apart. -->
+    <sonar.issue.ignore.multicriteria.e6.ruleKey>java:S5961</sonar.issue.ignore.multicriteria.e6.ruleKey>
+    <sonar.issue.ignore.multicriteria.e6.resourceKey>**/SequenceOfSpellsTest.java</sonar.issue.ignore.multicriteria.e6.resourceKey>
+    <!-- Its cases differ in how the property map is built, and the test names document the part-2 rules (greater/fewer/exact); a parameterized test would hide that. -->
+    <sonar.issue.ignore.multicriteria.e5.ruleKey>java:S5976</sonar.issue.ignore.multicriteria.e5.ruleKey>
+    <sonar.issue.ignore.multicriteria.e5.resourceKey>**/SuePredicatePart2Test.java</sonar.issue.ignore.multicriteria.e5.resourceKey>
     <!-- Day 4 asks for MD5 hashes; the algorithm is the puzzle, not a security choice. -->
     <sonar.issue.ignore.multicriteria.e4.ruleKey>java:S4790</sonar.issue.ignore.multicriteria.e4.ruleKey>
     <sonar.issue.ignore.multicriteria.e4.resourceKey>**/Md5HashCalculator.java</sonar.issue.ignore.multicriteria.e4.resourceKey>
@@ -37,7 +43,7 @@
     <sonar.issue.ignore.multicriteria.e2.ruleKey>java:S1118</sonar.issue.ignore.multicriteria.e2.ruleKey>
     <sonar.issue.ignore.multicriteria.e2.resourceKey>**/*.java</sonar.issue.ignore.multicriteria.e2.resourceKey>
 
-    <sonar.issue.ignore.multicriteria>e1,e2,e3,e4</sonar.issue.ignore.multicriteria>
+    <sonar.issue.ignore.multicriteria>e1,e2,e3,e4,e5,e6</sonar.issue.ignore.multicriteria>
     <!-- Puzzle solutions and demos print their results; System.out is the program's output, not logging. -->
     <sonar.issue.ignore.multicriteria.e1.ruleKey>java:S106</sonar.issue.ignore.multicriteria.e1.ruleKey>
     <sonar.issue.ignore.multicriteria.e1.resourceKey>**/*.java</sonar.issue.ignore.multicriteria.e1.resourceKey>
