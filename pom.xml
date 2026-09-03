@@ -27,11 +27,17 @@
     <sonar.projectKey>SvenWoltmann_advent-of-code-2015</sonar.projectKey>
     <sonar.organization>svenwoltmann</sonar.organization>
     <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+    <!-- Day 4 asks for MD5 hashes; the algorithm is the puzzle, not a security choice. -->
+    <sonar.issue.ignore.multicriteria.e4.ruleKey>java:S4790</sonar.issue.ignore.multicriteria.e4.ruleKey>
+    <sonar.issue.ignore.multicriteria.e4.resourceKey>**/Md5HashCalculator.java</sonar.issue.ignore.multicriteria.e4.resourceKey>
+    <!-- The puzzle input has a fixed format; a length check on every split() result would be noise. -->
+    <sonar.issue.ignore.multicriteria.e3.ruleKey>javabugs:S6466</sonar.issue.ignore.multicriteria.e3.ruleKey>
+    <sonar.issue.ignore.multicriteria.e3.resourceKey>**/PuzzleInputParser.java</sonar.issue.ignore.multicriteria.e3.resourceKey>
     <!-- The puzzle input parsers and helpers are static by design; a private constructor in 60 classes adds nothing. -->
     <sonar.issue.ignore.multicriteria.e2.ruleKey>java:S1118</sonar.issue.ignore.multicriteria.e2.ruleKey>
     <sonar.issue.ignore.multicriteria.e2.resourceKey>**/*.java</sonar.issue.ignore.multicriteria.e2.resourceKey>
 
-    <sonar.issue.ignore.multicriteria>e1,e2</sonar.issue.ignore.multicriteria>
+    <sonar.issue.ignore.multicriteria>e1,e2,e3,e4</sonar.issue.ignore.multicriteria>
     <!-- Puzzle solutions and demos print their results; System.out is the program's output, not logging. -->
     <sonar.issue.ignore.multicriteria.e1.ruleKey>java:S106</sonar.issue.ignore.multicriteria.e1.ruleKey>
     <sonar.issue.ignore.multicriteria.e1.resourceKey>**/*.java</sonar.issue.ignore.multicriteria.e1.resourceKey>
