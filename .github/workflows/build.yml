@@ -14,26 +14,31 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v7
         with:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
 
-      # We need JDK 11 to run SonarCloud; the application itself compiles with Java 8 (the version available in 2015)
-      - name: Set up JDK 11
-        uses: actions/setup-java@v3
+      # The JDK that RUNS the build, not the one it targets: the sources stay
+      # on Java 8, the version available in 2015 (maven-compiler-plugin
+      # source/target). The Sonar scanner and the build plugins need a recent
+      # JDK, and a recent one buys room before the next plugin raises its floor.
+      - name: Set up JDK
+        uses: actions/setup-java@v6
         with:
-          distribution: 'adopt'
-          java-version: 11
+          # 'adopt' was the AdoptOpenJDK alias; setup-java dropped it after the
+          # project became Eclipse Temurin.
+          distribution: 'temurin'
+          java-version: 25
 
       - name: Cache SonarCloud packages
-        uses: actions/cache@v3
+        uses: actions/cache@v6
         with:
           path: ~/.sonar/cache
           key: ${{ runner.os }}-sonar
           restore-keys: ${{ runner.os }}-sonar
 
       - name: Cache Maven packages
-        uses: actions/cache@v3
+        uses: actions/cache@v6
         with:
           path: ~/.m2
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
