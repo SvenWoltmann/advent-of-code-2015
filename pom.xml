@@ -21,7 +21,7 @@
     <surefire-plugin.version>3.0.0-M7</surefire-plugin.version>
     <spotless.version>2.28.0</spotless.version>
     <google-java-format.version>1.7</google-java-format.version>
-    <jacoco.version>0.8.8</jacoco.version>
+    <jacoco.version>0.8.15</jacoco.version>
 
     <!-- SonarQube Cloud setup -->
     <sonar.projectKey>SvenWoltmann_advent-of-code-2015</sonar.projectKey>
