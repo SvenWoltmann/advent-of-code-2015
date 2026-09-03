@@ -16,6 +16,8 @@ import java.util.stream.Collectors;
  */
 class PuzzleInputParser {
 
+  private static final Pattern PROPERTY_SEPARATOR = Pattern.compile(": ");
+
   // A repeated capturing group will only capture the last iteration.
   // Therefore, we cannot capture multiple properties with one regex.
   private static final Pattern PATTERN = Pattern.compile("Sue (\\d+): (.*)");
@@ -45,7 +47,7 @@ class PuzzleInputParser {
 
     String[] propertyStrings = input.split(", ");
     for (String propertyString : propertyStrings) {
-      String[] propertyStringParts = propertyString.split(": ");
+      String[] propertyStringParts = PROPERTY_SEPARATOR.split(propertyString);
       String name = propertyStringParts[0];
       int value = Integer.parseInt(propertyStringParts[1]);
       result.add(new SueProperty(name, value));
